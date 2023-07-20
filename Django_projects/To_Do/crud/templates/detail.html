@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+<h1 class="display-3 text-center">Details</h1>
+<br>
+<div class="container-fluid d-flex flex-row-reverse">
+<a href="/"><button type="button" class="btn btn-primary">Add</button></a>
+</div>
+<br>
+<div class='container-fluid d-flex justify-content-around'>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Email</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for d in data %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{d.fname}}</td>
+      <td>{{d.lname}}</td>
+      <td>{{d.email}}</td>
+      <td><a href="/edit/{{d.id}}"> <button type="button"  class="btn btn-primary btn-sm">Edit</button></a></td>
+      <td><a href="/delete/{{d.id}}"> <button type="button" class="btn btn-danger btn-sm ">Delete</button></a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+</div>
+
+
+
+{% endblock %}

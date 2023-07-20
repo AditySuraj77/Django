@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+<div class="container-sm text-center"><h1>Add Recipes</h1></div>
+<br>
+<br>
+<div class="container " style="height: 350px; background-color: rgb(128, 128, 128);">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3 width">
+            <label for="exampleFormControlInput1" class="form-label" style="color: white">Recipe Name</label>
+            <input type="text" name="name" required class="form-control" id="exampleFormControlInput1"
+                   placeholder="Recipe Name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label" style="color: white">Recipe Descriptions</label>
+            <textarea class="form-control" required name="desc" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="formFileSm" class="form-label" style="color: white">Upload Image</label>
+            <img src=""> <input class="form-control form-control-sm" name="img" id="formFileSm" type="file"></img>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+
+<br>
+<div class="container-sm text-center"><h1>Recipes List</h1></div>
+<br>
+<div class="container-sm text-center container-fluid">
+<form class="d-flex">
+    <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+    </div>
+<br>
+
+<div class="container " style=" background-color: rgb(211, 211, 211);">
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Sr.No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">IMG</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for items in item %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{items.name}}</td>
+            <td>{{items.desc}}</td>
+            <td><img src="/media/{{items.img}}" style="height: 100px"></td>
+            <td><a href="/delete/{{items.id}}">
+                <button type="button" class="btn btn-outline-danger">Delete</button>
+            </a></td>
+            <td><a href="/update/{{items.id}}">
+                <button type="button" class="btn btn-outline-primary">Edit</button>
+            </a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="display-1 text-center">Edit</h1>
+<br>
+    <div class="container" style="background-color:cyan; color:white;">
+        <form method="post" action="/update/{{data.id}}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Song Name</label>
+                <input type="text" name="song_name" class="form-control" id="exampleInputEmail1"
+                       aria-describedby="emailHelp"
+                       placeholder="Song Name"
+                        value="{{data.name}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Genres</label>
+                <input type="text" name="song_genre" class="form-control" id="exampleInputEmail2"
+                       aria-describedby="emailHelp"
+                       placeholder="Genres" value="{{data.genre}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Artists</label>
+                <textarea class="form-control" name="song_artist" id="exampleFormControlTextarea1"
+                          rows="3">{{data.artists}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Date</label>
+                <input type="date" name="song_date" required class="form-control" id="exampleInputPassword1"
+                       placeholder="Current-Date" value="{{data.date}}">
+            </div>
+            <div class="custom-file">
+                <img src=""> <input class="form-control form-control-sm" name="song_img" value="{{data.img}}" id="formFileSm" type="file"></img>
+            </div>
+            <br>
+            <div class="custom-file mt-2">
+                <input type="file" name="song_audio" value="{{data.audio}}" class="custom-file-input" id="customFiles">
+                <label class="custom-file-label" for="formFileSm">Choose Audio file</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Edit</button>
+            <a href="/songlist"><button type="button" class="btn btn-info mt-3">Back</button></a>
+
+        </form>
+    </div>
+
+    {% endblock %}

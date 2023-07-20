@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+<div class="container-sm text-center"><h1>Details</h1>
+</div>
+<br>
+
+<a href="/add"><button type="button" class="btn btn-outline-primary">Add</button></a>
+<a href="/"><button type="button" class="btn btn-outline-primary">Home</button></a>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Sr.No</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for data in data %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{data.fname}}</td>
+      <td>{{data.lname}}</td>
+      <td>{{data.email}}</td>
+      <td>{{data.phone}}</td>
+      <td> <a href="/delete/{{data.id}}"><button type="button" class="btn btn-outline-danger ">Delete</button></a></td>
+      <td><a href="/edit/{{data.id}}"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>SignUp</h1>
+<br>
+    {% if messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+    <strong>{{ message }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    {% endfor %}
+</div>
+{% endif %}
+<br>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <label>First Name : </label>
+        <input type="text" name="fname" placeholder="First Name">
+        <br>
+        <br>
+        <label>Last Name : </label>
+        <input type="text" name="lname" placeholder="Last Name">
+        <br>
+        <br>
+        <label>Create Username and Length of Username is under 10 Character : </label>
+        <input type="text" name="username" required placeholder="Create Username">
+        <br>
+        <br>
+        <label>Email : </label>
+        <input type="email" name="email" required placeholder="Email">
+        <br>
+        <br>
+        <label>Password : </label>
+        <input type="password" name="pass1" required placeholder="Password">
+        <br>
+        <br>
+        <label>Confirm Password : </label>
+        <input type="password" name="pass2" required placeholder="Confirm Password">
+        <br>
+        <button type="submit" value="submit">SignUp</button>
+        <br>
+    </form>
+    <br>
+
+    <a href="/">
+        <button type="submit">Back</button>
+    </a>
+</div>
+</body>
+</html>
